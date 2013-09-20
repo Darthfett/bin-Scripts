@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+
+import fileinput, os
+import subprocess
+
+for line in fileinput.input():
+    line = line.strip()
+    if os.path.isfile(line):
+        subprocess.Popen([r'C:\Program Files\Notepad++\notepad++.exe', line])

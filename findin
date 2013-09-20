@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+import os, sys
+
+if not 1 < len(sys.argv) < 3:
+    print('Usage: findin [directory]')
+    sys.exit(1)
+
+dir = sys.argv[1]
+
+files = set(sys.stdin.readlines())
+
+def find(name, path):
+    for root, dirs, files in os.walk(path):
+        if name.lower() in (file.lower() for file in files):
+            return os.path.join(root, name)
+
+print('\n'.join(filter(lambda x: x is not None, (find(file.strip(), dir) for file in files))))

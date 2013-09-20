@@ -1,0 +1,5 @@
+#!/usr/bin/env python
+
+import fileinput, re
+
+print('\n'.join(set(re.findall(r'\w+\.(?:cpp|c|h)', '\n'.join(fileinput.input()), re.I))))
